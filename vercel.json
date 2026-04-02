@@ -1,0 +1,15 @@
+{
+  "crons": [{ "path": "/api/cron", "schedule": "0 7 * * *" }],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "regions": ["iad1"],
+  "functions": {
+    "api/cron.js": { "maxDuration": 300, "memory": 1024 },
+    "api/analyze.js": { "maxDuration": 300, "memory": 1024 },
+    "api/youtube.js": { "maxDuration": 30 },
+    "api/data.js": { "maxDuration": 10 },
+    "api/reports.js": { "maxDuration": 10 }
+  }
+}
